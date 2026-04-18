@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tväråntre - Skomakeri & Hantverk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-dark: #121212;
+            --accent-gold: #c5a059;
+            --text-light: #f4f4f4;
+            --text-muted: #aaaaaa;
+            --white: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.98);
+            padding: 1.2rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/hero.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 220px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.1rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 3px; }
+
+        /* --- SEKTIONER --- */
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 { font-size: 2.2rem; margin-bottom: 2.5rem; position: relative; padding-bottom: 15px; }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 1px;
+            background: var(--accent-gold);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px 25px;
+            border-radius: 2px;
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover { border-color: var(--accent-gold); background: rgba(197, 160, 89, 0.05); }
+
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+
+        /* --- KARTA --- */
+        .map-container {
+            width: 100%;
+            height: 450px;
+            margin-top: 50px;
+            filter: grayscale(1) invert(0.92); /* Matchar den mörka designen */
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        /* --- KNAPPAR --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover { background: var(--accent-gold); color: var(--primary-dark); }
+
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            background: #0a0a0a;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { 
+                font-size: 2.5rem; 
+                line-height: 1.1;  /* Gör radavståndet mer kompakt */
+                margin-bottom: 1rem; /* Valfritt: minskar avståndet till elementet under */
+            }
+            nav a { display: block; margin: 2px 0; }
+            nav { 
+                padding: 0.5rem 0; 
+            }
+            .logo {
+                max-width: 150px; /* Justera detta värde till den storlek du önskar på mobilen */
+                margin-bottom: 1rem; /* Valfritt: minska marginalen för att spara plats */
+            }
+            .hero {
+                height: 60vh; /* Sänker höjden från 80vh till 60vh */
+                padding: 15px; /* Lite mindre padding för att ge texten mer plats */
+                padding-top: 80px;
+                /* Background-egenskaperna ärvs från din vanliga vy, 
+                   så du behöver inte skriva om hela "background: linear-gradient..." 
+                   om du inte vill ändra bilden eller mörkheten på mobilen. 
+                */
+            }
+            section {
+                padding: 50px 20px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#om-oss">Om Skomakeriet</a>
+        <a href="#tjanster">Tjänster</a>
+        <a href="#kontakt">Kontakt & Hitta hit</a>
+    </nav>
+
+    <header class="hero">
+        <img src="img/tvaranTRE.png" alt="Tväråntre Logotyp" class="logo">
+        <h1>Din skomakare i Överkalix</h1>
+        <p>Traditionellt Skomakeri & Kvalitetshantverk</p>
+    </header>
+
+    <section id="om-oss">
+        <h2>Kvalitet som varar</h2>
+        <p style="max-width: 800px; margin: 0 auto;">Välkommen till Tväråntre. Vi är ett genuint skomakeri som värnar om hantverket och miljön. Istället för att kasta, hjälper vi dig att ge dina favoritskor, väskor och läderprodukter ett nytt liv. Med precision och noggrannhet utför vi allt från enklare klackningar till avancerade reparationer.</p>
+    </section>
+
+    <section id="tjanster" style="background: #161616;">
+        <h2>Våra Tjänster</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Sko-reparationer</h3>
+                <p>Klackning, sulning och lagning av alla typer av skor – från eleganta finskor till tåliga kängor.</p>
+            </div>
+            <div class="card">
+                <h3>Läderarbeten</h3>
+                <p>Vi reparerar väskor, bälten och andra läderprodukter. Vi erbjuder även professionell puts och vård.</p>
+            </div>
+            <div class="card">
+                <h3>Sömnad</h3>
+                <p>Vi reparerar kläder, tält och utrustning samt utför gardinsömnad och omklädning av mindre möbler. Vi erbjuder även professionell anpassning och lagning av alla typer av textilier.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Besök oss</h3>
+                <p>Tväråntre Skomakeri<br>
+                Tvärån 3<br>
+                95691 Överkalix</p>
+                <a href="tvarantreskomakeri@gmail.com" class="btn">Skicka e-post</a>
+            </div>
+            <div class="card">
+                <h3>Öppettider</h3>
+                <p>Fredag - Söndag: 12:00 - 18:00<br>
+                Övriga tider kontakta via telefon.
+		</p>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1595.2043947529744!2d22.602940577561338!3d66.43314837879608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45d5ca3ea5d58029%3A0x9317b859d401773!2zVHbDpHLDpW4gc3R1Z29yIDM!5e0!3m2!1ssv!2sse!4v1776532939903!5m2!1ssv!2sse" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+ referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Tväråntre Skomakeri | Hantverk på riktigt</p>
+    </footer>
+
+</body>
+</html>
